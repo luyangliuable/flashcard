@@ -21,33 +21,27 @@ function App() {
     });
   };
 
-  const [cardDeck, updateCardDeck] = useState({
-    current: 1,
-    cards: [
-      {
-        id: 0,
-        confidence: 0,
-        front: "What framework is the frontend?",
-        back: "react-js",
-      },
-
-      {
-        id: 1,
-        confidence: 0,
-        front: "How to filter a card?",
-        back: "cards.cards.filter( card => card.id == 1 ).map(filteredCard => { \
-          return( \
-              <Card front = { filteredCard.front } back = { filteredCard.back } /> \
-          ); \
-      })"
-      }
-    ],
-  }
+  const [cardDeck, updateCardDeck] = useState(
+    {
+      current: 1,
+      cards: [
+        {id: 1,
+         front: "",
+         back: "",
+        }
+      ]
+    }
   );
 
   useEffect(() => {
-    console.log(cardDeck);
-  }, [cardDeck]);
+    // Fetch data
+      fetch("http://localhost:5001/api", {
+        method: 'GET',
+        // body: { content: file, name: file.path },
+      }).then(response => response.json()).then(data => {
+        updateCardDeck(data);
+      });
+  }, []);
 
   // store the current card
   let current = cardDeck.cards.filter(card => card.id == cardDeck.current);
