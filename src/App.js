@@ -1,25 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
 import Card from "./component/Card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
 
+  const updateConfidence = (confidence) => {
+    updateCardDeck(prev => {
+      const same_cards = prev.cards.filter(fcard => fcard.id != prev.current);
+      const diff_cards = prev.cards.filter(fcard => fcard.id == prev.current);
+      diff_cards[0].confidence += confidence;
+      return {
+        ...prev,
+        current: (prev.current + 1) % prev.cards.length,
+        cards: [
+          ...same_cards,
+          ...diff_cards,
+        ]
+      };
+    });
+  };
+
   const [cardDeck, updateCardDeck] = useState({
     current: 1,
-    "cards": [
+    cards: [
       {
-        id: 1,
-        "confidence": 0,
-        "front": "What framework is the frontend?",
-        "back": "react-js",
+        id: 0,
+        confidence: 0,
+        front: "What framework is the frontend?",
+        back: "react-js",
       },
 
       {
-        id: 2,
-        "confidence": 0,
-        "front": "How to filter a card?",
-        "back": "cards.cards.filter( card => card.id == 1 ).map(filteredCard => { \
+        id: 1,
+        confidence: 0,
+        front: "How to filter a card?",
+        back: "cards.cards.filter( card => card.id == 1 ).map(filteredCard => { \
           return( \
               <Card front = { filteredCard.front } back = { filteredCard.back } /> \
           ); \
@@ -29,23 +45,30 @@ function App() {
   }
   );
 
+  useEffect(() => {
+    console.log(cardDeck);
+  }, [cardDeck]);
+
   // store the current card
-  let current = cardDeck.cards.filter(card => card.id == 2);
+  let current = cardDeck.cards.filter(card => card.id == cardDeck.current);
 
   return (
     <div className="App" style={containerStyle.base}>
-      <p>Total Number of cards inside deck: { cardDeck.cards.length }</p>
+      <p>Total Number of cards inside deck: {cardDeck.cards.length}</p>
+      <p>Currently showing card: {JSON.stringify(current[0])}</p>
       {
         current.map(filteredCard => {
           return (
-              <Card front={ filteredCard.front } back={ filteredCard.back }/>
+            <Card front={filteredCard.front} back={filteredCard.back} />
           );
         })}
       <br />
       <div style={{ display: "flex", "justifyContent": "space-around" }}>
-      <div className="button" style={buttonStyle} onClick={ () => {} }>Confident</div>
-        <div className="button" style={buttonStyle}>Expected</div>
-        <div className="button" style={buttonStyle}>Need Practice</div>
+
+        <div className="button" style={buttonStyle} onClick={() => updateConfidence(2)}>Confident</div>
+      <div className="button" style={buttonStyle} onClick={() => updateConfidence(1)}>Expected</div>
+        <div className="button" style={buttonStyle} onClick={() => updateConfidence(0)}>Skip</div>
+        <div className="button" style={buttonStyle} onClick={() => updateConfidence(-2)}>Need Practice</div>
       </div>
     </div>
   );

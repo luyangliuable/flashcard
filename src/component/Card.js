@@ -17,8 +17,8 @@ export default class Card extends Component {
   render() {
     return (
       <>
-        <div style={style} onClick={() => this.flip()}>
-          {this.state.showfront ? this.props.back : this.props.front}
+        <div style={{...style,  background: this.state.showfront ? "#1e90ff" : "#888"}} onClick={() => this.flip()}>
+          {this.state.showfront ? this.props.front : this.props.back}
         </div>
       </>
     );
@@ -36,4 +36,5 @@ const style = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  cursor: "pointer",
 }
