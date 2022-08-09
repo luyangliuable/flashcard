@@ -6,9 +6,15 @@ import { useState, useEffect } from "react";
 function App() {
 
   const addCard = () => {
-    fetch("http://localhost:5001/api", {
+    const front = document.getElementById("front").value;
+    const back = document.getElementById("back").value;
+    fetch("http://localhost:5001/api/add", {
       method: 'POST',
-      body: "asdasdasdasd",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify( {front: front, back: back, confidence: 0} ),
+      // 'Content-Type': 'application/json',
     }).then(response => {
       return response.json();
     }).then(res => {
@@ -18,8 +24,8 @@ function App() {
 
   const updateConfidence = (confidence) => {
     updateCardDeck(prev => {
-      const same_cards = prev.cards.filter(fcard => fcard.id != prev.current);
-      const diff_cards = prev.cards.filter(fcard => fcard.id == prev.current);
+      const same_cards = prev.cards.filter(( fcard, idx ) => idx != prev.current);
+      const diff_cards = prev.cards.filter(( fcard, idx ) => idx == prev.current);
       diff_cards[0].confidence += confidence;
       return {
         ...prev,
@@ -51,21 +57,30 @@ function App() {
       method: 'GET',
       // body: { content: file, name: file.path },
     }).then(response => response.json()).then(data => {
-      updateCardDeck(data);
+      console.log(data.output);
+      console.log(data.output);
+      console.log(data.output);
+      console.log(data.output);
+      console.log(data.output.length);
+      if (data.output.length === 0) {
+        updateCardDeck({ current: 0, cards: [ { _id: 0, front: "Your deck have no cards", back: "" } ] });
+      } else {
+        updateCardDeck({current:0, cards: data.output});
+      }
     });
   }, []);
 
   // store the current card
-  let current = cardDeck.cards.filter(card => card.id == cardDeck.current);
+  let current = cardDeck.cards.filter(( card, index ) => index == cardDeck.current);
 
   return (
     <div className="App" style={containerStyle.base}>
       <p>Total Number of cards inside deck: {cardDeck.cards.length}</p>
       <p>Currently showing card: {JSON.stringify(current[0])}</p>
       {
-        current.map(filteredCard => {
+        current.map(card => {
           return (
-            <Card front={filteredCard.front} back={filteredCard.back} />
+            <Card front={card.front} back={card.back} />
           );
         })}
       <br />
@@ -77,7 +92,8 @@ function App() {
         <div className="button" style={buttonStyle} onClick={() => updateConfidence(-2)}>Need Practice</div>
       </div>
 
-      <textarea></textarea>
+      <textarea id="front" placeholder="front"></textarea>
+      <textarea id="back" placeholder="back"></textarea>
       <div className="button" style={buttonStyle} onClick={() => addCard()}>Add new card</div>
     </div>
   );
