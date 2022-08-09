@@ -5,6 +5,17 @@ import { useState, useEffect } from "react";
 
 function App() {
 
+  const addCard = () => {
+    fetch("http://localhost:5001/api", {
+      method: 'POST',
+      body: "asdasdasdasd",
+    }).then(response => {
+      return response.json();
+    }).then(res => {
+      console.log(res);
+    });
+  };
+
   const updateConfidence = (confidence) => {
     updateCardDeck(prev => {
       const same_cards = prev.cards.filter(fcard => fcard.id != prev.current);
@@ -25,9 +36,10 @@ function App() {
     {
       current: 1,
       cards: [
-        {id: 1,
-         front: "",
-         back: "",
+        {
+          id: 1,
+          front: "",
+          back: "",
         }
       ]
     }
@@ -35,12 +47,12 @@ function App() {
 
   useEffect(() => {
     // Fetch data
-      fetch("http://localhost:5001/api", {
-        method: 'GET',
-        // body: { content: file, name: file.path },
-      }).then(response => response.json()).then(data => {
-        updateCardDeck(data);
-      });
+    fetch("http://localhost:5001/api", {
+      method: 'GET',
+      // body: { content: file, name: file.path },
+    }).then(response => response.json()).then(data => {
+      updateCardDeck(data);
+    });
   }, []);
 
   // store the current card
@@ -60,10 +72,13 @@ function App() {
       <div style={{ display: "flex", "justifyContent": "space-around" }}>
 
         <div className="button" style={buttonStyle} onClick={() => updateConfidence(2)}>Confident</div>
-      <div className="button" style={buttonStyle} onClick={() => updateConfidence(1)}>Expected</div>
+        <div className="button" style={buttonStyle} onClick={() => updateConfidence(1)}>Expected</div>
         <div className="button" style={buttonStyle} onClick={() => updateConfidence(0)}>Skip</div>
         <div className="button" style={buttonStyle} onClick={() => updateConfidence(-2)}>Need Practice</div>
       </div>
+
+      <textarea></textarea>
+      <div className="button" style={buttonStyle} onClick={() => addCard()}>Add new card</div>
     </div>
   );
 }
