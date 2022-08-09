@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'; import './App.css';
 import Card from "./component/Card";
 import { useState, useEffect } from "react";
 
@@ -24,8 +23,8 @@ function App() {
 
   const updateConfidence = (confidence) => {
     updateCardDeck(prev => {
-      const same_cards = prev.cards.filter(( fcard, idx ) => idx != prev.current);
-      const diff_cards = prev.cards.filter(( fcard, idx ) => idx == prev.current);
+      const same_cards = prev.cards.filter(( _, idx ) => idx != prev.current);
+      const diff_cards = prev.cards.filter(( _, idx ) => idx == prev.current);
       diff_cards[0].confidence += confidence;
       return {
         ...prev,
@@ -76,13 +75,14 @@ function App() {
   return (
     <div className="App" style={containerStyle.base}>
       <p>Total Number of cards inside deck: {cardDeck.cards.length}</p>
-      <p>Currently showing card: {JSON.stringify(current[0])}</p>
+      {/* <p>Currently showing card: {JSON.stringify(current[0])}</p> */}
       {
         current.map(card => {
           return (
             <Card front={card.front} back={card.back} />
           );
-        })}
+        })
+      }
       <br />
       <div style={{ display: "flex", "justifyContent": "space-around" }}>
 

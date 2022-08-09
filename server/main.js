@@ -8,12 +8,13 @@ const app = express();
 //                             Connect to mongodb                            //
 ///////////////////////////////////////////////////////////////////////////////
 const PORT = 27017;
+const URL = "mongodb://host.docker.internal:27017/";
+// const URL = "mongodb://localhost:27017/";
 
-mongoose.connect(`mongodb://localhost:${PORT}/`).then(
+mongoose.connect(URL).then(
   () => {
     app.listen(PORT, () => {
       console.log("The server is running 🔥 ...");
-      console.log(`http://localhost:${PORT}/`);
     });
   }
 ).catch(
