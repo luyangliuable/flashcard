@@ -1,0 +1,11 @@
+FROM node:12
+
+WORKDIR /usr/src/server
+
+COPY package*.json ./
+
+RUN npm i
+RUN npm i mongoose
+RUN npm i nodemon - D
+
+COPY . .
