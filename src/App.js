@@ -49,6 +49,8 @@ function App() {
             };
         });
 
+        console.log(`Card ${cardDeck.current}'s confidence is ${current[0].confidence}`);
+
         ///////////////////////////////////////////////////////////////////////
         //                        Unflip the next card                       //
         ///////////////////////////////////////////////////////////////////////
@@ -59,7 +61,6 @@ function App() {
             };
         });
 
-        console.log(`Card ${cardDeck.current}'s confidence is ${current[0].confidence}`);
     };
 
     const [cardFlippedStatus, updateCardFlippedStatus] = useState(
@@ -100,7 +101,7 @@ function App() {
 
     return (
         <div className="App" style={containerStyle.base}>
-            <p>Total Number of cards inside deck: {cardDeck.cards.length}, current card is {cardDeck.current}</p>
+            <p>Total Number of cards inside deck: {cardDeck.cards.length}, current card is {cardDeck.current}, confidence is {current[0] ? current[0].confidence : ""} </p>
 
             {
                 current.map(card => {
