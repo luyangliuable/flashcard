@@ -8,10 +8,12 @@ const app = express();
 //                             Connect to mongodb                            //
 ///////////////////////////////////////////////////////////////////////////////
 const PORT = 27017;
-const URL = "mongodb://host.docker.internal:27017/";
-// const URL = "mongodb://localhost:27017/";
+// const MONGO = "mongodb://localhost:27017/";
+const MONGODB = process.env.MONGODB;
 
-mongoose.connect(URL).then(
+console.log(MONGODB);
+
+mongoose.connect(MONGODB).then(
   () => {
     app.listen(PORT, () => {
       console.log("The server is running 🔥 ...");
@@ -38,14 +40,6 @@ app.use(express.json());
 ///////////////////////////////////////////////////////////////////////////////
 //                                Send request                               //
 ///////////////////////////////////////////////////////////////////////////////
-
-// app.get("/api", (req, res) => {
-//   // res.json();
-//   console.log(res.body);
-//   return res;
-// });
-
-
 app.get("/api", getCards);
 
 app.post("/api/add", createCard);
