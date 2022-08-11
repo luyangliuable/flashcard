@@ -1,0 +1,35 @@
+[10:15:40.420] Global cache location '/Users/rubber/Library/Caches/typescript/4.7', safe file path '/opt/homebrew/lib/node_modules/typescript/lib/typingsafelist.json', types map path /opt/homebrew/lib/node_modules/typescript/lib/typesmap.json
+[10:15:40.421] Processing cache location '/Users/rubber/Library/Caches/typescript/4.7'
+[10:15:40.421] Trying to find '/Users/rubber/Library/Caches/typescript/4.7/package.json'...
+[10:15:40.422] Finished processing cache location '/Users/rubber/Library/Caches/typescript/4.7'
+[10:15:40.422] Process id: 3743
+[10:15:40.422] NPM location: /opt/homebrew/Cellar/node/18.6.0/bin/npm (explicit '--npmLocation' not  provided)
+[10:15:40.422] validateDefaultNpmLocation: false
+[10:15:40.422] Npm config file: /Users/rubber/Library/Caches/typescript/4.7/package.json
+[10:15:40.422] Updating types-registry npm package...
+[10:15:40.422] Exec: /opt/homebrew/Cellar/node/18.6.0/bin/npm install --ignore-scripts types-registry@latest
+[10:15:40.456]     Failed. stdout:
+    stderr:
+    /bin/sh: /opt/homebrew/Cellar/node/18.6.0/bin/npm: No such file or directory
+    
+[10:15:40.456] Updated types-registry npm package
+[10:15:40.456] Types registry file '/Users/rubber/Library/Caches/typescript/4.7/node_modules/types-registry/index.json' does not exist
+[10:15:41.141] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["/opt/homebrew/lib/node_modules/typescript/lib/lib.es5.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2016.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.dom.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.dom.iterable.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.scripthost.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.core.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.collection.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.generator.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.iterable.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.promise.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.proxy.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.reflect.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.symbol.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2016.array.include.d.ts","/opt/homebrew/lib/node_modules/typescript/lib/lib.es2016.full.d.ts","/Users/rubber/Documents/flashcard/src/component/Card.js","/Users/rubber/Documents/flashcard/src/App.js"],"compilerOptions":{"module":1,"target":3,"jsx":1,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":[],"projectRootPath":"/Users/rubber/Documents/flashcard/src","kind":"discover"}
+[10:15:41.150] Loaded safelist from types map file '/opt/homebrew/lib/node_modules/typescript/lib/typesmap.json'
+[10:15:41.150] Explicitly included types: []
+[10:15:41.151] Inferred typings from unresolved imports: []
+[10:15:41.151] Result: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/Users/rubber/Documents/flashcard/src/component/bower_components","/Users/rubber/Documents/flashcard/src/component/node_modules","/Users/rubber/Documents/flashcard/src/bower_components","/Users/rubber/Documents/flashcard/src/node_modules"]}
+[10:15:41.151] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/Users/rubber/Documents/flashcard/src/component/bower_components","/Users/rubber/Documents/flashcard/src/component/node_modules","/Users/rubber/Documents/flashcard/src/bower_components","/Users/rubber/Documents/flashcard/src/node_modules"]}
+[10:15:41.151] DirectoryWatcher:: Added:: WatchInfo: /Users/rubber/Documents/flashcard/src/component
+[10:15:41.151] DirectoryWatcher:: Added:: WatchInfo: /Users/rubber/Documents/flashcard/src/component 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[10:15:41.153] Elapsed:: 1.5810830001719296ms DirectoryWatcher:: Added:: WatchInfo: /Users/rubber/Documents/flashcard/src/component 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[10:15:41.153] DirectoryWatcher:: Added:: WatchInfo: /Users/rubber/Documents/flashcard/src/bower_components
+[10:15:41.153] DirectoryWatcher:: Added:: WatchInfo: /Users/rubber/Documents/flashcard/src/bower_components 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[10:15:41.153] Elapsed:: 0.2891249996609986ms DirectoryWatcher:: Added:: WatchInfo: /Users/rubber/Documents/flashcard/src/bower_components 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[10:15:41.153] DirectoryWatcher:: Added:: WatchInfo: /Users/rubber/Documents/flashcard/src/node_modules
+[10:15:41.153] DirectoryWatcher:: Added:: WatchInfo: /Users/rubber/Documents/flashcard/src/node_modules 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[10:15:41.153] Elapsed:: 0.038082999642938375ms DirectoryWatcher:: Added:: WatchInfo: /Users/rubber/Documents/flashcard/src/node_modules 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[10:15:41.153] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"module":1,"target":3,"jsx":1,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":[],"kind":"action::set"}
+[10:15:41.154] Response has been sent.
+[10:15:41.154] No new typings were requested as a result of typings discovery

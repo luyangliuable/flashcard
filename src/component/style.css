@@ -1,0 +1,33 @@
+@keyframes flip {
+    0% {}
+    100% {
+        transform: rotateX(180deg);
+    }
+}
+
+.card {
+    box-shadow: 3px 3px 5px #888;
+}
+
+.flip {
+    font-size: 0;
+    animation: flip 0.2s ease;
+}
+
+
+.input-text {
+    background-color: "#FFF";
+    padding: 10px;
+    outline: none;
+    border: 1.5px solid #000; 
+    border-radius: 14px;
+    margin: 10px;
+    width: 600px;
+    cursor: pointer;
+    transition: box-shadow 500ms ease;
+}
+
+.input-text:focus {
+    box-shadow: 1px 1px 10px #00bfff;
+}
+
