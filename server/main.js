@@ -11,7 +11,7 @@ const PORT = 27017;
 // const MONGO = "mongodb://localhost:27017/";
 
 // export MONGODB=mongodb://localhost:27017/
-const MONGODB = process.env.MONGODB;
+const MONGODB = process.env.MONGODB || "mongodb://localhost:27017/";
 
 console.log(MONGODB);
 

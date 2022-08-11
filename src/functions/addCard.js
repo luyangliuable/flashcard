@@ -2,7 +2,7 @@ const addCard = (document) => {
     const front = document.getElementById("front").value;
     const back = document.getElementById("back").value;
 
-    fetch("http://localhost:5001/api/add", {
+    fetch(process.env.API ? process.env.API + "/add" : "http://localhost:5001/api/add", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
