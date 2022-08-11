@@ -84,7 +84,7 @@ function App() {
     );
 
     useEffect(() => {
-        fetch("http://localhost:5001/api", {
+        fetch(process.env.API || "http://localhost:5001/api", {
             method: 'GET',
         }).then(response => response.json()).then(data => {
             if (data.output.length === 0) {
