@@ -1,6 +1,6 @@
 import './App.css';
 import Card from "./component/Card";
-import { useState, useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Button from "./component/Button";
 import InputText from "./component/InputText";
 import "./App.css";
@@ -8,23 +8,50 @@ import "./App.css";
 import addCard from "./functions/addCard";
 
 function App() {
+    /**
+     * This function represent the App component
+     * @returns nothing
+     */
+
     const updateConfidence = (confidence) => {
+        /**
+        * This function updates a confidence level of a flashcard.
+        * @param confidence - confidence level increment
+        * @returns nothing
+        */
+
         updateCardDeck(prev => {
 
+            ///////////////////////////////////////////////////////////////////
+            //       Get the different cards to the current card shown       //
+            ///////////////////////////////////////////////////////////////////
             const diff_cards = prev.cards.filter((_, idx) => idx != prev.current);
+
+            ///////////////////////////////////////////////////////////////////
+            //              Get the same card to currently shown             //
+            ///////////////////////////////////////////////////////////////////
             const same_card = prev.cards.filter((_, idx) => idx == prev.current);
 
+            ///////////////////////////////////////////////////////////////////
+            //                   Update only the card shown                  //
+            ///////////////////////////////////////////////////////////////////
             same_card[0].confidence += confidence;
 
+            //////////////////////////////////////////////////////////////////////////////
+            // Update the cardDeck state with the updated confidence and show next card //
+            //////////////////////////////////////////////////////////////////////////////
             return {
                 ...prev,
-                current: (cardDeck.current + 1) % ( prev.cards.length ),
+                current: (cardDeck.current + 1) % ( prev.cards.length ), // Show next card
                 cards: [
-                    ...prev.cards,
+                    ...prev.cards, // Confidence updated
                 ]
             };
         });
 
+        ///////////////////////////////////////////////////////////////////////
+        //                        Unflip the next card                       //
+        ///////////////////////////////////////////////////////////////////////
         updateCardFlippedStatus(prev => {
             return {
                 showfront: true,
@@ -36,27 +63,27 @@ function App() {
     };
 
     const [cardFlippedStatus, updateCardFlippedStatus] = useState(
+        // This State represents if the card is flipped
+        ///////////////////////////////////////////////////////////////////
         {
             showfront: true,
             flip: false,
         });
 
-
     const [cardDeck, updateCardDeck] = useState(
+        // This state represents the state of all cards in deck
+        ///////////////////////////////////////////////////////////////////////
+
+        ///////////////////////////////////////////////////////////////////////
+        //              This is a placeholder value for cardDeck             //
+        ///////////////////////////////////////////////////////////////////////
         ({
-            current: 1,
-            cards: [
-                {
-                    id: 1,
-                    front: "",
-                    back: "",
-                }
-            ]
+            current: null,
+            cards: []
         })
     );
 
     useEffect(() => {
-        // Fetch data
         fetch("http://localhost:5001/api", {
             method: 'GET',
         }).then(response => response.json()).then(data => {
@@ -73,7 +100,7 @@ function App() {
 
     return (
         <div className="App" style={containerStyle.base}>
-          <p>Total Number of cards inside deck: {cardDeck.cards.length}, current card is {cardDeck.current}</p>
+            <p>Total Number of cards inside deck: {cardDeck.cards.length}, current card is {cardDeck.current}</p>
 
             {
                 current.map(card => {

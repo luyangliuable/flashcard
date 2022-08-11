@@ -1,6 +1,5 @@
 FROM node:18
 
-# WORKDIR /usr/src/app/my-app
 WORKDIR /code
 
 COPY package.json .
